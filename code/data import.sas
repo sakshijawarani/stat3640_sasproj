@@ -167,11 +167,81 @@ consultant = consultant_new;
 drop consultant_new consultant_old;
 run;
 
+* Check business logic of project completion;
+data good bad ugly;
+set newmaster5;
+if (stage >= 4 and complete = 1) or (stage < 4 and complete = 1) then output good;
+if stage < 4 and complete = 1 then output bad;
+if stage >= 4 and complete = 0 then output ugly;
+run;
+
+data test2;
+set newmaster5;
+if projnum = 473 then output;
+run;
+
+proc sort data = test2;
+by date;
+run;
+
+* Fill in missing 'stage' value with logically sound assumption;
+
+data newmaster6;
+set newmaster5;
+if projnum = 473 and date = '8/11/2010' then stage = 4;
+run;
+
+* look into missing consultants;
+
+data test3;
+set newmaster6;
+if missing(consultant) then output;
+run;
+
+proc freq data = test3;
+table projnum;
+run;
+
+data test4;
+set newmaster6;
+if projnum in (458
+,470
+,481
+,482
+,485
+,486
+,488
+,489
+,490
+,496
+,498
+,499
+,501
+,504
+,505
+,507
+,509
+,513) then output;
+run;
+
+proc freq data = test4;
+table projnum*consultant / nocol nocum nopercent nofreq;
+run;
+
+* fill in missing consultant names;
+
+data newmaster7;
+set newmaster6;
+if projnum in (470, 481, 482, 496, 505, 507, 513) and missing(consultant) then consultant = "Jones";
+if projnum in (488, 490, 498) and missing(consultant) then consultant = "Smith";
+if projnum in (458, 485, 486, 489, 499, 501, 504, 509) and missing(consultant) then consultant = "Brown";
+run;
+
 * write data out to csv;
 
 filename out "~/stat3640_sasproj/data/newmaster.csv";
 data _NULL_;
-set newmaster5;
+set newmaster7;
 file out dsd;
 put Consultant ~ projnum date complete type ~ hours stage corrected;
 run;
@@ -181,5 +251,5 @@ run;
 libname sasproj "~/stat3640_sasproj/data";
 
 data sasproj.newmaster;
-set newmaster5;
+set newmaster7;
 run;
