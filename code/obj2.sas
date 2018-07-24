@@ -1,22 +1,29 @@
 *
-code for objective 2
+code for objective 2,3
 ;
 
-libname sasproj "~/stat6430_proj/data";
+libname sasproj "~/stat6430_sasproj/data";
 
-*ods pdf file="~/stat6430_proj/obj2_report.pdf";
+ods pdf file="~/stat6430_sasproj/obj2_report.pdf";
+
+title 'Analytical Consulting Lab';
+title2 'Progress Reports';
+title3 'Ongoing Projects as of Nov 4, 2010';
 
 data newmaster;
-set sasproj.newmaster; * (where = (date >= ''));
+set sasproj.newmaster (where = (complete = 0));
 run;
 
-data test;
-set newmaster;
-newdate = input(date, MMDDYY10.);
-run; 
-
-proc 
+/*
+proc freq data = newmaster;
+table projnum / nofreq nocol nopercent nocum;
 run;
-quit;
+*/
+
+proc print data=newmaster noobs label;
+var projnum;
+label projnum='Project Number';
+run;
 
 ods pdf close;
+
