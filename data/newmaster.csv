@@ -535,8 +535,7 @@
 "Brown",459,7/23/2010,0,"IT/Web Development",2.75,3,0
 "Brown",459,7/26/2010,0,"IT/Web Development",1,3,0
 "Brown",459,7/27/2010,0,"IT/Web Development",2.25,3,0
-"Brown",459,7/28/2010,1,"IT/Web Development",2.5,1,1
-"Brown",459,7/28/2010,1,"IT/Web Development",3,4,1
+"Brown",459,7/28/2010,1,"IT/Web Development",2.5,4,1
 "Brown",459,7/30/2010,1,"IT/Web Development",0.75,5,0
 "Brown",459,7/9/2010,0,"IT/Web Development",1.25,1,0
 "Jones",460,7/12/2010,0,"IT/Web Development",1.5,1,1
@@ -853,7 +852,6 @@
 "Smith",506,10/20/2010,0,"Advising",1,3,0
 "Smith",506,10/22/2010,0,"Advising",1,3,0
 "Smith",506,10/25/2010,1,"Advising",1,4,1
-"Smith",506,10/25/2010,1,"Advising",,4,1
 " ",507,10/22/2010,0,"Advising",0.75,1,0
 "Jones",507,10/25/2010,0,"Advising",0.75,2,1
 "Jones",507,10/26/2010,0,"Advising",1,3,0

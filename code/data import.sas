@@ -41,6 +41,26 @@ length Type $20;
 input Type $ ProjNum;
 run;
 
+* Review imported raw files;
+
+proc contents data = assign;
+run;
+
+proc freq data=assign;
+run;
+
+proc freq data=corrections;
+run;
+
+proc freq data=master;
+run;
+
+proc freq data=newfiles;
+run;
+
+proc freq data=projclass;
+run;
+
 * Join the files;
 
 * First, stack the master file with the new files;
@@ -68,23 +88,42 @@ run;
 */
 
 * Merge in projclass;
-data newmaster;
+data newmaster1b;
 merge newmaster projclass;
 by projnum;
 run;
 
-* Add corrections to newmaster;
-
-proc sort data = newmaster;
-by projnum date;
-run;
+* Consolidate rows in corrections file before merging;
 
 proc sort data = corrections;
 by projnum date;
 run;
 
+data corrections2;
+set corrections;
+by projnum date;
+retain hours2 stage2;
+if first.date then hours2 = hours;
+if last.date then output;
+run;
+
+data corrections2 (drop=hours2);
+set corrections2;
+hours = hours2;
+run;
+
+* Add corrections to newmaster;
+
+proc sort data = newmaster1b;
+by projnum date;
+run;
+
+proc sort data = corrections2;
+by projnum date;
+run;
+
 data newmaster2;
-merge newmaster (rename=(hours=hours_old stage=stage_old)) corrections;
+merge newmaster1b (rename=(hours=hours_old stage=stage_old)) corrections2;
 by projnum date;
 run;
 
