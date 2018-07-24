@@ -4,13 +4,13 @@ code for objective 1
 
 * Read in all files, skipping headers;
 
-filename assn "~/stat3640_sasproj/data/Assignments.csv";
+filename assn "~/stat6430_sasproj/data/Assignments.csv";
 data assign;
 infile assn dsd firstobs=2;
 input Consultant $ ProjNum;
 run;
 
-filename corr "~/stat3640_sasproj/data/Corrections.csv";
+filename corr "~/stat6430_sasproj/data/Corrections.csv";
 data corrections;
 infile corr dsd firstobs=2;
 retain projnum;
@@ -18,7 +18,7 @@ length date $10;
 input ProjNum Date $ Hours Stage;
 run;
 
-filename mstr "~/stat3640_sasproj/data/Master.csv";
+filename mstr "~/stat6430_sasproj/data/Master.csv";
 data master;
 infile mstr dsd firstobs=2;
 retain Consultant ProjNum;
@@ -26,7 +26,7 @@ length date $10;
 input Consultant $ ProjNum Date $ Hours Stage Complete;
 run;
 
-filename newf "~/stat3640_sasproj/data/NewForms.csv";
+filename newf "~/stat6430_sasproj/data/NewForms.csv";
 data newfiles;
 infile newf dsd firstobs=2;
 retain ProjNum;
@@ -34,7 +34,7 @@ length date $10;
 input ProjNum Date $ Hours Stage Complete;
 run;
 
-filename pjc "~/stat3640_sasproj/data/ProjClass.csv";
+filename pjc "~/stat6430_sasproj/data/ProjClass.csv";
 data projclass;
 infile pjc dsd firstobs=2;
 length Type $20;
@@ -237,19 +237,32 @@ if projnum in (488, 490, 498) and missing(consultant) then consultant = "Smith";
 if projnum in (458, 485, 486, 489, 499, 501, 504, 509) and missing(consultant) then consultant = "Brown";
 run;
 
+* format date as date;
+data newmaster8;
+set newmaster7;
+newdate = date;
+run;
+
+data newmaster9;
+set newmaster8 (drop=date);
+date = input(newdate, MMDDYY10.);
+format date date9.;
+run;
+
+
 * write data out to csv;
 
-filename out "~/stat3640_sasproj/data/newmaster.csv";
+filename out "~/stat6430_sasproj/data/newmaster.csv";
 data _NULL_;
-set newmaster7;
+set newmaster9 (drop=newdate);
 file out dsd;
 put Consultant ~ projnum date complete type ~ hours stage corrected;
 run;
 
 * create permanent sas file;
 
-libname sasproj "~/stat3640_sasproj/data";
+libname sasproj "~/stat6430_sasproj/data";
 
 data sasproj.newmaster;
-set newmaster7;
+set newmaster9 (drop=newdate);
 run;
