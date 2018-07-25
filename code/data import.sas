@@ -170,24 +170,42 @@ run;
 * Check business logic of project completion;
 data good bad ugly;
 set newmaster5;
-if (stage >= 4 and complete = 1) or (stage < 4 and complete = 1) then output good;
-if stage < 4 and complete = 1 then output bad;
-if stage >= 4 and complete = 0 then output ugly;
+if (stage >= 4 and complete = 1) or (stage < 4 and complete = 0) then output good; * these are valid;
+if stage < 4 and complete = 1 then output bad; * these are invalid;
+if stage >= 4 and complete = 0 then output ugly; * these aren't necessarily wrong, but need checking;
 run;
 
+data good_miss;
+set good;
+if missing(stage) then output;
+run;
+
+* projects with missing stages:
+439, 452, 458, 464, 473, 489, 496
+;
+
 data test2;
-set newmaster5;
-if projnum = 473 then output;
+set good;
+if projnum in (439, 452, 458, 464, 489, 496, 473) then output;
 run;
 
 proc sort data = test2;
-by date;
+by projnum date;
 run;
 
-* Fill in missing 'stage' value with logically sound assumption;
+* Fill in missing 'stage' value with logically sound assumptions where possible.
+Here we only assume that missing values can be filled in, we assume that non-missing
+values are correct.
+;
 
 data newmaster6;
 set newmaster5;
+if projnum = 439 and date =	'5/27/2010' then stage = 3;
+if projnum = 439 and date in ('6/7/2010','6/8/2010') then stage = 3;
+if projnum = 452 and date = '7/2/2010' then stage = 3;
+if projnum = 464 and date = '7/26/2010' then stage = 2;
+if projnum = 489 and date = '9/13/2010' then stage = 3;
+if projnum = 496 and date = '9/27/2010' then stage = 3;
 if projnum = 473 and date = '8/11/2010' then stage = 4;
 run;
 
