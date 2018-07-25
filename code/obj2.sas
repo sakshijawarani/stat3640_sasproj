@@ -11,16 +11,20 @@ title2 'Progress Reports';
 title3 'Ongoing Projects as of Nov 4, 2010';
 
 data newmaster;
-set sasproj.newmaster (where = (complete = 0));
+set sasproj.newmaster (where = (date <= '4NOV2010'd));
 run;
 
-/*
-proc freq data = newmaster;
-table projnum / nofreq nocol nopercent nocum;
+proc means data = newmaster noprint;
+class projnum;
+var complete;
+output out=ongoing1 max(complete)=complete;
 run;
-*/
 
-proc print data=newmaster noobs label;
+data ongoing2;
+set ongoing1 (where = ((complete = 0) and (_type_ ^= 0)));
+run;
+
+proc print data=ongoing2 noobs label;
 var projnum;
 label projnum='Project Number';
 run;
