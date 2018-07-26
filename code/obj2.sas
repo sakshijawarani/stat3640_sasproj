@@ -1,5 +1,5 @@
 *
-code for objective 2,3
+code for objective 2
 ;
 
 libname sasproj "~/stat6430_sasproj/data";
