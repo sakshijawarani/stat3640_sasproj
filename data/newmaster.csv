@@ -334,7 +334,7 @@
 "Jones",439,21MAY2010,0,"Study Coordination",1.25,2,0
 "Jones",439,24MAY2010,0,"Study Coordination",1,2,0
 "Jones",439,25MAY2010,0,"Study Coordination",3,3,0
-"Jones",439,27MAY2010,0,"Study Coordination",2.5,,0
+"Jones",439,27MAY2010,0,"Study Coordination",2.5,3,0
 "Jones",439,28MAY2010,0,"Study Coordination",0.75,3,0
 "Jones",439,05MAY2010,0,"Study Coordination",1,1,0
 "Jones",439,01JUN2010,0,"Study Coordination",2,3,0
@@ -345,8 +345,8 @@
 "Jones",439,18JUN2010,1,"Study Coordination",2.25,4,1
 "Jones",439,03JUN2010,0,"Study Coordination",1,3,0
 "Jones",439,04JUN2010,0,"Study Coordination",2.75,3,0
-"Jones",439,07JUN2010,0,"Study Coordination",1.5,,0
-"Jones",439,08JUN2010,0,"Study Coordination",1.5,,0
+"Jones",439,07JUN2010,0,"Study Coordination",1.5,3,0
+"Jones",439,08JUN2010,0,"Study Coordination",1.5,3,0
 "Jones",440,17MAY2010,0,"Data Analysis",1,1,1
 "Jones",440,18MAY2010,1,"Data Analysis",0.75,4,0
 "Brown",441,17MAY2010,0,"Advising",0.75,1,0
@@ -447,7 +447,7 @@
 "Jones",452,25JUN2010,0,"Study Coordination",1.5,3,0
 "Jones",452,28JUN2010,0,"Study Coordination",0.75,3,0
 "Jones",452,30JUN2010,0,"Study Coordination",1.5,3,1
-"Jones",452,02JUL2010,0,"Study Coordination",1,,0
+"Jones",452,02JUL2010,0,"Study Coordination",1,3,0
 "Jones",452,06JUL2010,1,"Study Coordination",2,4,0
 "Jones",452,08JUL2010,1,"Study Coordination",2,5,0
 "Jones",453,18JUN2010,0,"Advising",1,1,0
@@ -559,7 +559,7 @@
 "Jones",463,22JUL2010,1,"Advising",1.25,4,0
 "Smith",464,19JUL2010,0,"Study Coordination",1,1,0
 "Smith",464,21JUL2010,0,"Study Coordination",0.75,2,0
-"Smith",464,26JUL2010,0,"Study Coordination",1,,0
+"Smith",464,26JUL2010,0,"Study Coordination",1,2,0
 "Smith",464,27JUL2010,0,"Study Coordination",1,2,0
 "Smith",464,29JUL2010,0,"Study Coordination",1.25,2,0
 "Smith",464,30JUL2010,0,"Study Coordination",1,2,1
@@ -740,7 +740,7 @@
 "Smith",488,06SEP2010,0,"Study Coordination",1.75,2,0
 "Smith",488,09SEP2010,0,"Study Coordination",0.75,2,0
 "Brown",489,10SEP2010,0,"IT/Web Development",2.75,3,1
-"Brown",489,13SEP2010,0,"IT/Web Development",1,,0
+"Brown",489,13SEP2010,0,"IT/Web Development",1,3,0
 "Brown",489,14SEP2010,1,"IT/Web Development",1.25,4,0
 "Brown",489,15SEP2010,1,"IT/Web Development",1,5,0
 "Brown",489,03SEP2010,0,"IT/Web Development",1,1,1
@@ -777,7 +777,7 @@
 "Jones",496,20SEP2010,0,"IT/Web Development",1.5,1,0
 "Jones",496,22SEP2010,0,"IT/Web Development",0.75,2,0
 "Jones",496,24SEP2010,0,"IT/Web Development",2.25,3,0
-"Jones",496,27SEP2010,0,"IT/Web Development",1,,0
+"Jones",496,27SEP2010,0,"IT/Web Development",1,3,0
 "Jones",496,29SEP2010,0,"IT/Web Development",3,3,0
 "Jones",496,30SEP2010,0,"IT/Web Development",,3,0
 "Jones",497,23SEP2010,0,"Advising",0.75,1,0
